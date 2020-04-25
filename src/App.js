@@ -9,7 +9,20 @@ class App extends Component{
     super();
     
     this.state = {
-      string :"GAD"
+      monsters :[
+        {
+          name:"franksetien ",
+          id: 1
+        },
+        {
+          name:"Drukla ",
+          id: 2
+        },
+        {
+          name:"zombie ",
+          id: 3
+        },
+      ]
     }
     
   }
@@ -17,11 +30,11 @@ class App extends Component{
   render(){
     return(
         <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>Hello {this.state.string}</p>
-            <button onClick={ ()=> this.setState({string: "Abdelrhman"} )}> Change Text</button>
-          </header>
+          {
+            this.state.monsters.map(monster => {
+              return <h1 key={monster.id}>{monster.name  +  monster.id}</h1>
+            })
+          }
         </div>
     )
   }
