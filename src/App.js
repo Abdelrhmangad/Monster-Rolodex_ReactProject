@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-let p = "Abdelrhman gad";
 class App extends Component{
   
   constructor(){
@@ -9,23 +7,22 @@ class App extends Component{
     super();
     
     this.state = {
-      monsters :[
-        {
-          name:"franksetien ",
-          id: 1
-        },
-        {
-          name:"Drukla ",
-          id: 2
-        },
-        {
-          name:"zombie ",
-          id: 3
-        },
-      ]
+      monsters :[]
     }
     
   }
+
+
+  componentDidMount(){
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => response.json())
+      .then(users => {
+
+        this.setState({monsters: users})
+
+      })
+  }
+
   
   render(){
     return(
