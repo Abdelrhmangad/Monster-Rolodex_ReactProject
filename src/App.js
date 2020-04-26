@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-<<<<<<< Updated upstream
-=======
 import {CardList} from './Components/card-list/card-list.component';
->>>>>>> Stashed changes
 class App extends Component{
   
   constructor(){
@@ -29,21 +26,15 @@ class App extends Component{
 
   
   render(){
-    return(
-        <div className="App">
-<<<<<<< Updated upstream
-          {
-            this.state.monsters.map(monster => {
-              return <h1 key={monster.id}>{monster.name  +  monster.id}</h1>
-            })
-          }
-=======
-          <CardList name="Gad"/>
-          <h1>{this.state.string}</h1>
->>>>>>> Stashed changes
-        </div>
-    )
-  }
+    return (
+    <div className="App">
+      {
+        this.state.monsters.map(monster => {
+          return <h1 key={monster.id}>{monster.name  +  monster.id}</h1>
+        })
+      }
+    </div>
+  )}
 }
 
 export default App;
