@@ -23,18 +23,18 @@ class App extends Component{
 
       })
   }
-
   
   render(){
     return (
     <div className="App">
-      {
-        this.state.monsters.map(monster => {
-          return <h1 key={monster.id}>{monster.name  +  monster.id}</h1>
-        })
-      }
+
+      <CardList monsters={this.state.monsters} />
+
     </div>
   )}
+
+
+
 }
 
 export default App;
