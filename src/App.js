@@ -8,8 +8,9 @@ class App extends Component{
     super();
     
     this.state = {
-      monsters :[]
-    }
+      monsters :[],
+      searchFeild:""
+    };
     
   }
 
@@ -25,10 +26,25 @@ class App extends Component{
   }
   
   render(){
+    const { monsters, searchFeild } = this.state;
+    // === const monsters = this.state.monsters
+    const filteredMonsters = monsters.filter(monster=>{
+
+      return monster.name.toLowerCase().includes(searchFeild.toLowerCase())
+    
+    })
+    console.log(filteredMonsters)
     return (
     <div className="App">
 
-      <CardList monsters={this.state.monsters} />
+      <input 
+        type="search" autoFocus 
+        placeholder="Search monsters.."
+        // this,setState has a callBack Function
+        onChange={e => this.setState({searchFeild: e.target.value})}
+      />
+
+      <CardList monsters={filteredMonsters} />
 
     </div>
   )}
