@@ -19,11 +19,7 @@ class App extends Component{
   componentDidMount(){
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(response => response.json())
-      .then(users => {
-
-        this.setState({monsters: users})
-
-      })
+      .then(users => { this.setState({monsters: users}) });
   }
 
   handleChange = (e) =>{
@@ -39,6 +35,8 @@ class App extends Component{
     return (
 
     <div className="App">
+
+      <h1>Monsters Rolodex</h1>
 
       <SearchBox
         placeholder="Search Monstrers.." 
