@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {CardList} from './Components/card-list/card-list.component';
+import {SearchBox} from './Components/search-Box/search-box.component';
 class App extends Component{
   
   constructor(){
@@ -12,8 +13,8 @@ class App extends Component{
       searchFeild:""
     };
     
+    // this.handleChange = this.handleChange.bind(this)
   }
-
 
   componentDidMount(){
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -24,29 +25,30 @@ class App extends Component{
 
       })
   }
+
+  handleChange = (e) =>{
+    this.setState({ searchFeild: e.target.value })
+  }
   
   render(){
     const { monsters, searchFeild } = this.state;
     // === const monsters = this.state.monsters
     const filteredMonsters = monsters.filter(monster=>{
-
       return monster.name.toLowerCase().includes(searchFeild.toLowerCase())
-    
     })
-    console.log(filteredMonsters)
     return (
+
     <div className="App">
 
-      <input 
-        type="search" autoFocus 
-        placeholder="Search monsters.."
-        // this,setState has a callBack Function
-        onChange={e => this.setState({searchFeild: e.target.value})}
+      <SearchBox
+        placeholder="Search Monstrers.." 
+        handleChange={this.handleChange}
       />
 
-      <CardList monsters={filteredMonsters} />
+      <CardList monsters={filteredMonsters}/>
 
     </div>
+    
   )}
 
 
